@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  api.rest:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=4000
+      - ASPNETCORE_HTTPS_PORTS=4001
+      - DESAFIO_CONNECTION_STRING=Host=postgres.desafio;Port=5432;Database=rent_motos;Username=postgres;Password=postgres;Include Error Detail=true
+      - RABBIT_HOST=amqp://desafio-queue:5672
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+      - LOCALPATH_PHOTOS=/app/uploads
+    ports:
+      - "4000:4000"
+      - "4001:4001"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - c:/desafio-backend/photos-cnh:/app/uploads

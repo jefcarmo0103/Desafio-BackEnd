@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  api.rest:
+    image: ${DOCKER_REGISTRY-}apirest
+    build:
+      context: .
+      dockerfile: src/Api.Rest/Dockerfile
+    ports:
+        - "4000:4000"
+        - "4001:4001"
+    environment:
+        - ASPNETCORE_ENVIRONMENT= Development
+        - ASPNETCORE_HTTP_PORTS=4000
+        - ASPNETCORE_HTTPS_PORTS=4001
+        - DESAFIO_CONNECTION_STRING=Host=postgres.desafio;Port=5432;Database=rent_motos;Username=postgres;Password=postgres;Include Error Detail=true
+        - RABBIT_HOST=amqp://desafio-queue:5672
+        - RABBIT_USERNAME=guest
+        - RABBIT_PASSWORD=guest 
+        - LOCALPATH_PHOTOS=/app/uploads
+    volumes:
+        - c:/desafio-backend/photos-cnh:/app/uploads
+  rabbitmq: 
+    image: rabbitmq:3.13-management
+    hostname: desafio-queue
+    ports:
+        - 15672:15672
+        - 5672:5672
+  postgres.desafio:
+    image: postgres:latest
+    environment:
+        - POSTGRES_DB=rent_motos
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - DESAFIO_CONNECTION_STRING=Host=localhost;Port=5432;Database=rent_motos;Username=postgres;Password=postgres
+    volumes:
+        - c:/desafio-backend/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+        - 5432:5432
