@@ -1,0 +1,8 @@
+1- Criar uma pasta no C: com o nome: desafio-backend
+
+2- Dentro dessa pasta criar mais duas:
+  postgres
+  photos-cnh
+
+3- Dentro da pasta postgres:
+  Colar o arquivo init.sql
