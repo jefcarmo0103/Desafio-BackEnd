@@ -31,11 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioBackEnd.IoC", "src\D
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8BDB7EAB-673B-4329-89BD-0F963ECC5D25}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{38B67544-9898-4AEB-BB6A-BD6D05CD465D}"
-	ProjectSection(SolutionItems) = preProject
-		READ.txt = READ.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioBackEnd.Test", "src\DesafioBackEnd.Test\DesafioBackEnd.Test.csproj", "{77E64D7C-5C0D-4C81-89EC-E1BF44249061}"
 EndProject
 Global
